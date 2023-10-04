@@ -20,8 +20,8 @@ func serveRegistry(urlPrefix, registryDir string) http.Handler {
 			if content, err := os.ReadFile(contentPath); err == nil {
 				var decoded map[string]any
 				if err = json.Unmarshal(content, &decoded); err == nil {
-					if err = json.Unmarshal(content, &decoded); err == nil {
-						w.Header().Set("Content-Type", decoded["mediaType"].(string))
+					if mediaType, ok := decoded["mediaType"].(string); ok {
+						w.Header().Set("Content-Type", mediaType)
 					}
 				}
 			}

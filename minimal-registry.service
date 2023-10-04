@@ -1,0 +1,25 @@
+[Unit]
+Description=Minimal Docker Registry
+Documentation=https://github.com/adrianmoye/minimal-registry
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/default/%N
+EnvironmentFile=-/etc/sysconfig/%N
+ExecStart=/usr/local/bin/minimal-registry -d /var/lib/rancher/k3s/agent/registry -p 9080
+KillMode=process
+Delegate=yes
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+TasksMax=infinity
+TimeoutStartSec=0
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
