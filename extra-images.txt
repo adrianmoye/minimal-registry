@@ -1,0 +1,6 @@
+docker.io/longhornio/csi-node-driver-registrar:v2.5.0
+docker.io/longhornio/livenessprobe:v2.8.0
+docker.io/longhornio/longhorn-engine:v1.4.1
+docker.io/longhornio/longhorn-instance-manager:v1.4.1
+docker.io/longhornio/longhorn-manager:v1.4.1
+docker.io/library/registry:2.8.1
